@@ -373,27 +373,26 @@ if v93 then
     require(v93):Stop()
 end
 
+until game.Players.LocalPlayer.Character
+
 local _PlaceId = game.PlaceId
 
-if ({
-    [2753915549] = true,
-    [4442272183] = true,
-    [7449423635] = true,
-})[_PlaceId] then
-    if _PlaceId == 2753915549 then
-        World1 = true
-    elseif _PlaceId == 4442272183 then
-        World2 = true
-    elseif _PlaceId == 7449423635 then
-        World3 = true
-    end
-else
-    game.Players.LocalPlayer:Kick('Unsupported Game')
+-- يخلي السكربت يشتغل بكل المابات
+World1 = false
+World2 = false
+World3 = false
+
+-- اذا تريد فقط يحدد العالم اذا كان Blox Fruits
+if _PlaceId == 2753915549 then
+    World1 = true
+elseif _PlaceId == 4442272183 then
+    World2 = true
+elseif _PlaceId == 7449423635 then
+    World3 = true
 end
 
 repeat
-    wait()
-until game.Players.LocalPlayer.Character
+    task.wait()
 
 function CheckQuest()
     MyLevel = game:GetService('Players').LocalPlayer.Data.Level.Value
